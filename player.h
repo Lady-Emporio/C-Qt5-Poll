@@ -5,6 +5,20 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 #include <QtWidgets>
+class Ball;
+
+class Enemy : public QObject,public QGraphicsRectItem
+{
+    Q_OBJECT
+public:
+    Enemy();
+    Ball const * ball;
+public slots:
+    void move();
+};
+
+
+
 class Player : public QObject,public QGraphicsRectItem
 {
     Q_OBJECT
@@ -25,6 +39,7 @@ public:
     void set_right(bool x);
     void set_top(bool y);
     Player const * player;
+    Enemy const * enemy;
 public slots:
     void move();
 private:
