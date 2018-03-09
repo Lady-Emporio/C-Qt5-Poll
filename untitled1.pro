@@ -11,10 +11,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    player.cpp
+    player.cpp \
+    window.cpp
 
 HEADERS  += \
     player.h \
-    poll_const.h
+    poll_const.h \
+    window.h
 
 FORMS    +=

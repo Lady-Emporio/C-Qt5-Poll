@@ -5,6 +5,10 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 #include <QtWidgets>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsRectItem>
+#include <QPushButton>
 class Ball;
 
 class Enemy : public QObject,public QGraphicsRectItem

@@ -11,4 +11,5 @@ const int EnemySPEEN=1;
 const int ALL_WIDTH=100;
 const int ALL_HEIGHT=10;
 const int PLAYER_SPEEND=8;
+const int WINDOW_MARGIN_FOR_BUTTOM=2*100;
 #endif // POLL_CONST_H
