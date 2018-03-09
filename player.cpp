@@ -13,10 +13,50 @@ Player::Player()
     this->setFlag(QGraphicsItem::ItemIsFocusable); //https://doc.qt.io/qt-5.10/qgraphicsitem.html#GraphicsItemFlag-enum
     this->setFocus();
     this->setBrush(QBrush(QColor(10, 100, 10)));
+    QTimer * timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
+    timer->start( (ONE_SEC_ms/FPS));
+    left=false;
+    right=false;
+    up=false;
+    down=false;
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
     if (event->key() == Qt::Key_Left){
+        left=true;
+    }
+    else if (event->key() == Qt::Key_Right){
+        right=true;
+        }
+    else if (event->key() == Qt::Key_Up){
+        up=true;
+    }
+    else if (event->key() == Qt::Key_Down){
+        down=true;
+    }
+}
+void Player::keyReleaseEvent(QKeyEvent *event){
+    if(event->type()==QEvent::KeyRelease){
+        switch(event->key()){
+            case Qt::Key_Left:
+                left=false;
+                break;
+            case Qt::Key_Right:
+                right=false;
+                break;
+            case Qt::Key_Up:
+                up=false;
+                break;
+            case Qt::Key_Down:
+                down=false;
+                break;
+        }
+    }
+}
+
+void Player::move(){
+    if (left){
         if(x()<=0){
         setPos(x()+1,y());
         }
@@ -24,7 +64,7 @@ void Player::keyPressEvent(QKeyEvent *event){
         setPos(x()-PLAYER_SPEEND,y());
         };
     }
-    else if (event->key() == Qt::Key_Right){
+    else if (right){
         if(x()>=WINDOW_WIDTH-ALL_WIDTH){
             setPos(x()-1,y());
         }
@@ -32,11 +72,22 @@ void Player::keyPressEvent(QKeyEvent *event){
         setPos(x()+PLAYER_SPEEND,y());
         }
     }
-    else if (event->key() == Qt::Key_Up){
-        setPos(x(),y()-PLAYER_SPEEND);
+    if (up){
+        if(y()<=0){
+            setPos(x(),y()+PLAYER_SPEEND);
+        }
+        else{
+            setPos(x(),y()-PLAYER_SPEEND);
+        }
     }
-    else if (event->key() == Qt::Key_Down){
-        setPos(x(),y()+PLAYER_SPEEND);
+    else if (down){
+        if(y()>=WINDOW_HEIGHT-10){
+            setPos(x(),y()-PLAYER_SPEEND);
+        }
+        else{
+            setPos(x(),y()+PLAYER_SPEEND);
+        }
+
     }
 }
 

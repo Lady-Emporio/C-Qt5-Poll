@@ -25,6 +25,13 @@ class Player : public QObject,public QGraphicsRectItem
 public:
     Player();
     void keyPressEvent(QKeyEvent * event);
+    void keyReleaseEvent(QKeyEvent *event);
+    bool left;
+    bool right;
+    bool up;
+    bool down;
+public slots:
+    void move();
 };
 
 

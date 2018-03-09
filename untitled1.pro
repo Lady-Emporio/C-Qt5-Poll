@@ -6,7 +6,7 @@
 
 QT       += core gui widgets
 
-TARGET = untitled1
+TARGET = QtPoll
 TEMPLATE = app
 
 
