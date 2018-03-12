@@ -2,7 +2,7 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include "poll_const.h"
-//#include <QDebug>
+
 //qDebug()<<x()<<" | "<<y()<<" move_right: "<<move_right  <<" move_top: "<<move_top<<"\n";
 
 
@@ -100,11 +100,6 @@ Ball::Ball()
     //timer->start(100);
     timer->start( (ONE_SEC_ms/FPS));
 
-//    QLinearGradient gradient(0, 0,20,20);
-//    QGradientStops stops;
-//    stops << QGradientStop(1.0, QColor(215, 100, 215));
-//    gradient.setStops(stops);
-//    this->setBrush(QBrush(gradient));
     this->setBrush(QBrush(QColor(215, 100, 215)));
 
     move_top=false;
@@ -137,9 +132,12 @@ move_right=false;
 }
 if (y()<=0){
 move_top=false;
+emit valueChanged(0);
+
 }
 else if (y()>=WINDOW_HEIGHT-BALL_SIDE){
 move_top=true;
+emit valueChanged(1);
 }
 if(this->collidesWithItem(player)){
     move_top=true;

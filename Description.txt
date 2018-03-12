@@ -1,0 +1,1 @@
+v4 -add score, two score label, nasty signal and slot

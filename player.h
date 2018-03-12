@@ -9,8 +9,8 @@
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
 #include <QPushButton>
+#include <QDebug>
 class Ball;
-
 class Enemy : public QObject,public QGraphicsRectItem
 {
     Q_OBJECT
@@ -51,6 +51,8 @@ public:
     void set_top(bool y);
     Player const * player;
     Enemy const * enemy;
+signals:
+     void valueChanged(int newValue);
 public slots:
     void move();
 private:

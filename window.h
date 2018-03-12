@@ -15,10 +15,13 @@ public:
     QHBoxLayout *mainLayout;
     QVBoxLayout *leftLayout;
     QVBoxLayout *rightLayout;
+    QLabel *scoreEnemy;
+    QLabel *scorePlayer;
 
 signals:
 
 public slots:
+     void setValue(int value);
 };
 
 #endif // WINDOW_H
